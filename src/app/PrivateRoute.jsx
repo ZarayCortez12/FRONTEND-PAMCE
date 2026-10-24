@@ -34,11 +34,14 @@ const PrivateRoute = ({ allowedRoles }) => {
     return <Navigate to="/inicio_sesion" replace />;
   }
 
-  if (isLoading || usuario === null) {
+  if (isLoading || !usuario) {
     return <LoadingComponent mensaje="Cargando Información..." />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(usuario.rol_activo.nombre_rol)) {
+  if (
+    allowedRoles &&
+    !allowedRoles.includes(usuario.rol_activo?.nombre_rol)
+  ) {
     return <Navigate to="/" replace />;
   }
 

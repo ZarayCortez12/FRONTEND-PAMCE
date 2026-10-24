@@ -316,7 +316,6 @@ const autenticacionSlice = createSlice({
         state.isSuccess = false;
         state.isExisting = false;
         state.message = action.payload.message;
-        state.usuario = action.payload.usuario;
       })
       .addCase(obtenerUsuarioActual.pending, (state) => {
         state.isLoading = true;
@@ -348,7 +347,6 @@ const autenticacionSlice = createSlice({
         state.isSuccess = false;
         state.isExisting = false;
         state.message = action.payload.message;
-        state.usuario = action.payload.usuario;
       })
       .addCase(editarInformacionContacto.fulfilled, (state, action) => {
         state.isLoading = false;
