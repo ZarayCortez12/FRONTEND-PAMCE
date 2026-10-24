@@ -1328,7 +1328,7 @@ function InformacionParticipacion() {
       const link = document.createElement("a");
 
       link.href = url;
-      link.download = `certificado-participacion-${id_participacion}.pdf`;
+      link.download = `certificado-${participacion?.es_ganador ? "reconocimiento" : "participacion"}-${id_participacion}.pdf`;
 
       document.body.appendChild(link);
       link.click();
