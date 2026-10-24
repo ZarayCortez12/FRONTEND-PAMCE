@@ -180,7 +180,7 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
           <Tooltip
             title={
               edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy
+              edicion?.fecha_inicio_convocatoria <= hoy
                 ? "No se puede editar"
                 : "Editar Requisito"
             }
@@ -189,11 +189,15 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
               className={`p-2! rounded-lg transition
                 ${
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "bg-gray-100 cursor-not-allowed"
                     : "bg-yellow-50 hover:bg-yellow-100"
                 }
               `}
+              disabled={
+                edicion?.fecha_inicio_convocatoria &&
+                edicion?.fecha_inicio_convocatoria <= hoy
+              }
               onClick={() => {
                 setIsEditMode(true);
                 setRequisitoSeleccionado(record);
@@ -227,7 +231,7 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
                 size={18}
                 className={
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "text-gray-400"
                     : "text-yellow-600"
                 }
@@ -237,7 +241,7 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
           <Tooltip
             title={
               edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy
+              edicion?.fecha_inicio_convocatoria <= hoy
                 ? "No se puede"
                 : "Eliminar"
             }
@@ -246,11 +250,15 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
               className={`p-2! rounded-lg transition
                 ${
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "bg-gray-100 cursor-not-allowed"
                     : "bg-red-50 hover:bg-red-100"
                 }
                 `}
+              disabled={
+                edicion?.fecha_inicio_convocatoria &&
+                edicion?.fecha_inicio_convocatoria <= hoy
+              }
               onClick={() =>
                 handleDelete(record.id_requisito_edicion_categoria)
               }
@@ -259,7 +267,7 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
                 size={18}
                 className={
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "text-gray-400"
                     : "text-red-600"
                 }
@@ -593,12 +601,12 @@ function RequisitosCategoriaEdicion({ id_edicion_categoria }) {
           onClick={() => setIsModalVisible(true)}
           disabled={
             edicion?.fecha_inicio_convocatoria &&
-            edicion?.fecha_inicio_convocatoria < hoy
+            edicion?.fecha_inicio_convocatoria <= hoy
           }
           className={`-mt-3! bg-white border-2 rounded-xl py-3! flex items-center justify-center font-poppins text-md shadow-md transition w-full md:w-47! gap-1 cursor-pointer
                       ${
                         edicion?.fecha_inicio_convocatoria &&
-                        edicion?.fecha_inicio_convocatoria < hoy
+                        edicion?.fecha_inicio_convocatoria <= hoy
                           ? "border-gray-400 text-gray-400 cursor-not-allowed"
                           : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
                       }`}

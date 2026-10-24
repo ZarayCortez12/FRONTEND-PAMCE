@@ -349,7 +349,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
           <Tooltip
             title={
               edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy
+              edicion?.fecha_inicio_convocatoria <= hoy
                 ? "No se puede editar porcentaje"
                 : "Editar porcentaje"
             }
@@ -357,7 +357,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
             <button
               disabled={
                 edicion?.fecha_inicio_convocatoria &&
-                edicion?.fecha_inicio_convocatoria < hoy
+                edicion?.fecha_inicio_convocatoria <= hoy
               }
               onClick={() => {
                 setRubricaEditar(record);
@@ -367,7 +367,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
               className={`p-2! rounded-lg transition
                 ${
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "bg-gray-100 cursor-not-allowed"
                     : "bg-yellow-50 hover:bg-yellow-100"
                 }
@@ -377,7 +377,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
                 size={18}
                 className={
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "text-gray-400"
                     : "text-yellow-600"
                 }
@@ -387,7 +387,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
           <Tooltip
             title={
               edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy
+              edicion?.fecha_inicio_convocatoria <= hoy
                 ? "No se puede eliminar"
                 : "Eliminar"
             }
@@ -396,11 +396,15 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
               className={`p-2! rounded-lg transition
                           ${
                             edicion?.fecha_inicio_convocatoria &&
-                            edicion?.fecha_inicio_convocatoria < hoy
+                            edicion?.fecha_inicio_convocatoria <= hoy
                               ? "bg-gray-100 cursor-not-allowed"
                               : "bg-red-50 hover:bg-red-100"
                           }
                           `}
+              disabled={
+                edicion?.fecha_inicio_convocatoria &&
+                edicion?.fecha_inicio_convocatoria <= hoy
+              }
               onClick={() => {
                 setRubricaAEliminar(record);
                 setModalEliminarRubrica(true);
@@ -410,7 +414,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
                 size={18}
                 className={
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                     ? "text-gray-400"
                     : "text-red-600"
                 }
@@ -509,7 +513,7 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
                 icon={<Pencil size={14} />}
                 hidden={
                   edicion?.fecha_inicio_convocatoria &&
-                  edicion?.fecha_inicio_convocatoria < hoy
+                  edicion?.fecha_inicio_convocatoria <= hoy
                 }
                 onClick={() => {
                   setEditandoCriterioId(
@@ -766,13 +770,13 @@ function RubricasCategoriaEdicion({ id_edicion_categoria }) {
           }}
           disabled={
             (edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy) ||
+              edicion?.fecha_inicio_convocatoria <= hoy) ||
             totalUsadoRubricas === 100
           }
           className={`-mt-3! bg-white border-2 rounded-xl py-3! flex items-center justify-center font-poppins text-md shadow-md transition w-full md:w-47! gap-1 cursor-pointer
                       ${
                         (edicion?.fecha_inicio_convocatoria &&
-                          edicion?.fecha_inicio_convocatoria < hoy) ||
+                          edicion?.fecha_inicio_convocatoria <= hoy) ||
                         totalUsadoRubricas === 100
                           ? "border-gray-400 text-gray-400 cursor-not-allowed"
                           : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"

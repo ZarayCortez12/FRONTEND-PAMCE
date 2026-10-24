@@ -472,7 +472,11 @@ function DefinirConvocatoria() {
                     : "bg-yellow-50 hover:bg-yellow-100"
                 }
               `}
+              // Antes solo cambiaba el estilo: el botón se veía deshabilitado
+              // pero seguía abriendo la edición
+              disabled={deshabilitarEditarRequisito}
               onClick={() => {
+                if (deshabilitarEditarRequisito) return;
                 setIsEditMode(true);
                 setRequisitoSeleccionado(record);
                 const requisito = record.Requisito;
@@ -519,7 +523,11 @@ function DefinirConvocatoria() {
                     : "bg-red-50 hover:bg-red-100"
                 }
                 `}
-              onClick={() => handleDelete(record.id_requisito_edicion)}
+              disabled={deshabilitarEliminarRequisito}
+              onClick={() => {
+                if (deshabilitarEliminarRequisito) return;
+                handleDelete(record.id_requisito_edicion);
+              }}
             >
               <Trash2
                 size={18}
@@ -616,17 +624,22 @@ function DefinirConvocatoria() {
     return [...new Set([...manual, ...archivo])];
   };
 
-  const hoy = new Date();
+  // Fechas como texto YYYY-MM-DD en la zona del usuario. Antes "hoy" era un
+  // objeto Date: compararlo con el texto de la fecha siempre daba false (los
+  // botones nunca se deshabilitaban), y new Date("YYYY-MM-DD") se interpreta
+  // en UTC (en Colombia bloqueaba desde las 7 p. m. del día anterior).
+  // Mismo criterio que el backend: bloqueado desde el día de inicio.
+  const hoy = new Date().toLocaleDateString("en-CA");
 
   const fechaInicioConvocatoria = edicion?.fecha_inicio_convocatoria
-    ? new Date(edicion.fecha_inicio_convocatoria.replace(/\//g, "-"))
+    ? String(edicion.fecha_inicio_convocatoria).replace(/\//g, "-").slice(0, 10)
     : null;
 
-  const deshabilitarEditarRequisito =
-    fechaInicioConvocatoria && fechaInicioConvocatoria < hoy;
+  const deshabilitarEditarRequisito = Boolean(
+    fechaInicioConvocatoria && fechaInicioConvocatoria <= hoy,
+  );
 
-  const deshabilitarEliminarRequisito =
-    fechaInicioConvocatoria && fechaInicioConvocatoria < hoy;
+  const deshabilitarEliminarRequisito = deshabilitarEditarRequisito;
 
   const EmptyTable = () => (
     <div className="flex flex-col items-center justify-center py-10">
@@ -751,12 +764,12 @@ function DefinirConvocatoria() {
             onClick={() => setIsModalVisible(true)}
             disabled={
               edicion?.fecha_inicio_convocatoria &&
-              edicion?.fecha_inicio_convocatoria < hoy
+              edicion?.fecha_inicio_convocatoria <= hoy
             }
             className={`-mt-3! bg-white border-2 rounded-xl py-3! flex items-center justify-center font-poppins text-md shadow-md transition w-full md:w-55! gap-1 cursor-pointer
                       ${
                         edicion?.fecha_inicio_convocatoria &&
-                        edicion?.fecha_inicio_convocatoria < hoy
+                        edicion?.fecha_inicio_convocatoria <= hoy
                           ? "border-gray-400 text-gray-400 cursor-not-allowed"
                           : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
                       }`}
