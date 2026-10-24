@@ -29,6 +29,11 @@ import {
 } from "react-icons/fa";
 import { Tabs, Timeline } from "antd";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+// utcOffset necesita el plugin utc; antes funcionaba solo porque otra página
+// (ListaAuditoria) lo registraba al cargarse
+dayjs.extend(utc);
 import { motion } from "framer-motion";
 import {
   listarRequisitosEdicion,
@@ -178,6 +183,40 @@ const TimelineParticipacion = React.memo(({ participacion }) => {
   );
 });
 
+// Valida extensión y tamaño según la configuración del requisito.
+// Antes, al editar una respuesta se aceptaba cualquier archivo aunque la
+// pantalla mostrara los formatos y el tamaño permitidos.
+const validarArchivoRequisito = (file, config) => {
+  if (!config) return true;
+
+  const extensionesPermitidas = config.extensiones_permitidas
+    ?.split(",")
+    .map((ext) => ext.trim().toLowerCase().replace(/^\./, ""));
+
+  const extensionArchivo = file.name.split(".").pop().toLowerCase();
+
+  if (
+    extensionesPermitidas?.length &&
+    !extensionesPermitidas.includes(extensionArchivo)
+  ) {
+    toast.error(
+      `Formato no permitido. Use: ${extensionesPermitidas
+        .map((e) => e.toUpperCase())
+        .join(", ")}`,
+    );
+    return false;
+  }
+
+  if (config.tamano_max_mb && file.size > config.tamano_max_mb * 1024 * 1024) {
+    toast.error(
+      `El archivo supera el tamaño máximo permitido (${config.tamano_max_mb} MB)`,
+    );
+    return false;
+  }
+
+  return true;
+};
+
 function EditarRespuestaView({
   respuesta,
   textoRespuesta,
@@ -268,6 +307,14 @@ function EditarRespuestaView({
               <Upload
                 maxCount={1}
                 beforeUpload={(file) => {
+                  if (
+                    !validarArchivoRequisito(
+                      file,
+                      requisitoSeleccionado?.RequisitosConfig,
+                    )
+                  ) {
+                    return Upload.LIST_IGNORE;
+                  }
                   setArchivoNuevo(file);
                   return false;
                 }}
@@ -468,6 +515,14 @@ function EditarRespuestaCategoriaView({
               <Upload
                 maxCount={1}
                 beforeUpload={(file) => {
+                  if (
+                    !validarArchivoRequisito(
+                      file,
+                      requisitoSeleccionado?.RequisitosCategoriaConfig,
+                    )
+                  ) {
+                    return Upload.LIST_IGNORE;
+                  }
                   setArchivoNuevo(file);
                   return false;
                 }}
@@ -886,22 +941,24 @@ function InformacionParticipacion() {
           </Tooltip>
           <Tooltip
             title={
-              hoy <
-              participacion?.edicionCategoria?.edicion.fecha_fin_convocatoria
+              hoy >
+                participacion?.edicionCategoria?.edicion
+                  .fecha_fin_convocatoria ||
+              participacion?.estado !== "pendiente"
                 ? "No se puede editar el archivo"
                 : "Editar archivo"
             }
           >
             <button
               disabled={
-                hoy >=
+                hoy >
                   participacion?.edicionCategoria?.edicion
                     .fecha_fin_convocatoria ||
                 participacion?.estado !== "pendiente"
               }
               onClick={() => {
                 if (
-                  hoy >=
+                  hoy >
                     participacion?.edicionCategoria?.edicion
                       .fecha_fin_convocatoria ||
                   participacion?.estado !== "pendiente"
@@ -910,7 +967,7 @@ function InformacionParticipacion() {
                 editarRespuesta(record);
               }}
               className={`p-2! rounded-lg ${
-                hoy >=
+                hoy >
                   participacion?.edicionCategoria?.edicion
                     .fecha_fin_convocatoria ||
                 participacion?.estado !== "pendiente"
@@ -922,7 +979,7 @@ function InformacionParticipacion() {
               <Pencil
                 size={18}
                 className={
-                  hoy >=
+                  hoy >
                     participacion?.edicionCategoria?.edicion
                       .fecha_fin_convocatoria ||
                   participacion?.estado !== "pendiente"
