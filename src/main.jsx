@@ -6,11 +6,21 @@ import { reduxConfig } from "./app/reduxConfig.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
+import dayjs from "dayjs";
+import "dayjs/locale/es";
+import esES from "antd/locale/es_ES";
+import { ConfigProvider } from "antd";
+
+// Español para fechas (dayjs) y componentes de Ant Design. Antes esta
+// configuración estaba en src/index.js, que no se cargaba nunca.
+dayjs.locale("es");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={reduxConfig}>
-      <App />
+      <ConfigProvider locale={esES}>
+        <App />
+      </ConfigProvider>
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -18,7 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         draggable
         style={{ zIndex: 999999 }}
       />
-      
     </Provider>
   </React.StrictMode>,
 );
