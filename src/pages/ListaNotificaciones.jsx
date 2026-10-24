@@ -27,6 +27,7 @@ import { Eye } from "lucide-react";
 import imagen_no_data from "../images/imagen_no_data.jpg";
 import es from "dayjs/locale/es";
 import LoadingInformacion from "@/components/LoadingInformacion";
+import DOMPurify from "dompurify";
 
 function ListaNotificaciones() {
   const dispatch = useDispatch();
@@ -424,7 +425,9 @@ function ListaNotificaciones() {
             [&_b]:font-semibold
           "
                 dangerouslySetInnerHTML={{
-                  __html: notificacionSeleccionada.mensaje,
+                  // Se limpia el HTML antes de mostrarlo para que un dato
+                  // escrito por un usuario no pueda ejecutar código
+                  __html: DOMPurify.sanitize(notificacionSeleccionada.mensaje),
                 }}
               />
             </div>
