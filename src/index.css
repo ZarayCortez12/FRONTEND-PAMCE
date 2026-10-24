@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&family=Montserrat:wght@400;600&display=swap");
+@import "tailwindcss";
+
+/* Utilidades personalizadas */
+
+@layer base {
+  :root {
+    --font-inter: "Inter", sans-serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-montserrat: "Montserrat", sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-inter {
+    font-family: var(--font-inter) !important;
+  }
+  .font-poppins {
+    font-family: var(--font-poppins) !important;
+  }
+  .font-montserrat {
+    font-family: var(--font-montserrat) !important;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #f54257;
+}
+
+h3 {
+  color: #e10318;
+  font-size: 25px;
+}
+
+main {
+  height: 85vh;
+  overflow: auto;
+  background-color: #fff;
+  border: 2px solid #00000014;
+  border-radius: 10px;
+}
+
+
+.h3-separator {
+  color: #e10318;
+  font-size: 20px;
+  margin: 15px 0 0 0;
+  background: #e7e7e7;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-layout {
+  min-height: 100vh;
+}
+
+/*
+Tamaño del slider
+*/
+.ant-layout-sider {
+  flex: 0 0 250px !important;
+  max-width: 225px !important;
+  min-width: 215px !important;
+  width: 215px !important;
+}
+.ant-layout-sider-collapsed {
+  flex: 0 0 60px !important;
+  max-width: 50px !important;
+  min-width: 50px !important;
+  width: 50px !important;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #fff;
+  border-bottom: 3px solid #f3ca4c;
+}
+
+.sm-logo {
+  width: 50px;
+  transition: fade 0.4s;
+}
+
+.rc-logo {
+  width: 90px;
+  transition: fade 0.4s;
+  margin: 25px;
+}
+
+.ant-layout-sider-collapsed .sm-logo {
+  display: block;
+}
+.ant-layout-sider-collapsed .lg-logo {
+  display: none;
+}
+
+.logo {
+  margin: 0;
+  height: 64px;
+  align-items: center;
+}
+
+.lg-logo {
+  color: #e10318;
+}
+
+.ant-layout-sider-collapsed .sm-logo {
+  display: block;
+  color: #e10318;
+}
+
+.ant-menu {
+  background: #ffff !important;
+}
+
+.ant-menu-title-content {
+  font-size: 16px;
+}
+.ant-layout-header h5 {
+  line-height: 20px;
+  font-size: 14px;
+}
+.ant-layout-header p {
+  line-height: 20px;
+  font-size: 13px;
+}
+.ant-layout-header div .badge {
+  top: 16px;
+  right: -6px;
+}
+.error {
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0 15px;
+  background-color: rgb(219, 3, 3);
+  width: fit-content;
+  border-radius: 0 0 25px 25px;
+}
+
+:where(.css-dev-only-do-not-override-1qhpsh8).ant-select-multiple {
+  font-size: 14px;
+  padding: inherit;
+  width: 150px;
+}
+
+.confirmation-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-preview {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.color-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.agregar-edicion:hover {
+  background-color: #ffff;
+  color: #fff;
+}
+
+.ant-menu-item-selected,
+.ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #e10318 !important; /* tu rojo */
+}
+
+/* Solo el item seleccionado (texto + icono) se vuelve rojo */
+.ant-menu-item-selected .ant-menu-title-content,
+.ant-menu-item-selected .ant-menu-item-icon {
+  color: #e10318 !important;
+}
+
+/* Evita que otros ítems del mismo submenú cambien de color */
+.ant-menu-submenu
+  .ant-menu-item:not(.ant-menu-item-selected)
+  .ant-menu-title-content,
+.ant-menu-submenu
+  .ant-menu-item:not(.ant-menu-item-selected)
+  .ant-menu-item-icon {
+  color: inherit !important;
+}
+
+/* 🔹 Si quieres que al hover también sea rojo */
+.ant-menu-item:hover,
+.ant-menu-submenu-title:hover {
+  color: #f54257 !important;
+}
+
+/* 🔹 Cambiar color de la flecha al seleccionar */
+.ant-menu-submenu-selected > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+  color: #e10318 !important;
+}
+
+/* 🔹 Cambiar color de la flecha al hacer hover */
+.ant-menu-submenu-title:hover .ant-menu-submenu-arrow {
+  color: #f54257 !important;
+}
+
+/* Scrollbar para navegadores basados en WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la scrollbar */
+}
+
+/* Parte de la scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+/* El "thumb" de la scrollbar (el que se mueve) */
+::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2; /* Color del thumb */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #f1f1f1; /* Un borde para separar del fondo */
+}
+
+/* Cuando haces hover sobre el thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #807f7f;
+  /* Cambiar el color cuando el mouse pasa sobre él */
+}
+
+.grid-categoria {
+  display: grid;
+  gap: 15px;
+  grid-template-areas:
+    "info criterios jurados"
+    "info convocados convocados";
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 15px;
+}
+
+.grid-secundario {
+  display: grid;
+  gap: 15px;
+  grid-template-areas: "requisitos participantes";
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.requisitos {
+  grid-area: requisitos;
+}
+
+.participantes {
+  grid-area: participantes;
+}
+
+.info {
+  grid-area: info;
+}
+.criterios {
+  grid-area: criterios;
+}
+.jurados {
+  grid-area: jurados;
+}
+.convocados {
+  grid-area: convocados;
+}
+
+.grid-secundario {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 900px) {
+  .grid-categoria {
+    grid-template-areas:
+      "info"
+      "criterios"
+      "jurados"
+      "convocados";
+    grid-template-columns: 1fr;
+  }
+
+  .grid-secundario {
+    grid-template-areas:
+      "requisitos"
+      "participantes";
+    grid-template-columns: 1fr;
+  }
+}

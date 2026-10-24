@@ -1,0 +1,391 @@
+/* Importing Google Fonts - Montserrat */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../images/fondo_inicio.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.login-page::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.login-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.login-logo {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  width: 100%;
+}
+
+.login-logo img {
+  height: auto !important;
+  display: block !important;
+}
+
+.login-form-content {
+  flex: 1.5;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.login-form-content-code {
+  flex: 1.5;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.login-container .form-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e10318;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-container .separator {
+  position: relative;
+  margin: 1rem 0;
+  text-align: center;
+  background: #fff;
+}
+
+.login-container .separator span {
+  z-index: 1;
+  font-weight: 500;
+  color: black;
+  position: relative;
+  background: #fff;
+  font-size: 15px;
+  padding: 0 0.9rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.login-container .separator::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  width: 100%;
+  background: #f3ca4c;
+}
+
+.login-form .input-wrapper {
+  height: 54px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.login-form .input-field {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 1.06rem;
+  border-radius: 0.31rem;
+  border: 1.5px solid #f54257;
+  padding: 0px 1.25rem 0 3.12rem;
+  transition: 0.3s ease;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.login-form .input-field:focus {
+  border-color: #e10318;
+  background: #fff;
+}
+
+.login-form .input-field::placeholder {
+  color: #818181;
+}
+
+.login-form .input-wrapper i {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  display: flex;
+  color: #f54257;
+  align-items: center;
+  transform: translateY(-50%);
+  transition: 0.2s ease;
+  font-size: 21px;
+}
+
+.login-form .input-wrapper i:not(.eye-icon) {
+  left: 0.93rem;
+  pointer-events: none;
+}
+
+.login-form .input-field:focus ~ i:not(.eye-icon) {
+  color: #e10318;
+}
+
+.login-form .input-wrapper i.eye-icon {
+  display: none;
+  right: 0.93rem;
+  color: #e10318;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.login-form .input-wrapper .input-field:valid ~ .eye-icon {
+  display: flex;
+}
+
+.login-container a {
+  text-align: center;
+  font-size: 1.06rem;
+  font-weight: 500;
+  color: #f54257;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+  color: #e10318;
+  text-decoration: none !important;
+}
+
+.login-form .login-button {
+  border: none;
+  outline: none;
+  width: 50%;
+  height: 45px;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #f54257;
+  transition: 0.3s ease;
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-button {
+  border: none;
+  outline: none;
+  width: 30%;
+  height: 45px;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #f54257;
+  transition: 0.3s ease;
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.login-form .login-button:hover {
+  background: #e10318;
+}
+
+.login-button:hover {
+  background: #e10318;
+}
+
+.login-form .cancel-button {
+  border: none;
+  outline: none;
+  width: 50%;
+  height: 45px;
+  color: #e10318;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #fff;
+  transition: 0.3s ease;
+  border: #e10318 solid 1px;
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.cancel-button {
+  border: none;
+  outline: none;
+  width: 30%;
+  height: 45px;
+  color: #e10318;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #fff;
+  transition: 0.3s ease;
+  border: #e10318 solid 1px;
+  margin-top: 0.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.login-form .cancel-button:hover {
+  background: #e10318;
+  color: #fff;
+}
+
+.cancel-button:hover {
+  background: #e10318;
+  color: #fff;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.login-form .error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.vertical-divider {
+  width: 4px;
+  background-color: #e10318;
+  min-height: 100%;
+}
+
+.mensaje-exito {
+  color: green;
+  font-size: 15px;
+  margin-top: 3px;
+  font-weight: bold;
+}
+
+.login-form-content .login-form .codigo-input:focus {
+  outline-color: #e10318;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 1rem auto;
+  padding: 12px 20px;
+
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background: #fff;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  transition: all 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+}
+
+.google-button:hover {
+  background: #f5f5f5;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.toast-container {
+  position: fixed !important;
+  z-index: 99999 !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  left: auto !important;
+  bottom: auto !important;
+}
+
+.content-otp-group {
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    background-size: cover; /* en pantallas medianas */
+  }
+}
+
+@media (max-width: 768px) {
+  .login-inner {
+    flex-direction: column; /* logo arriba, form abajo */
+    gap: 0.5rem;
+    margin-right: 1.7rem;
+  }
+
+  .vertical-divider {
+    display: none; /* ya no tiene sentido en vertical */
+    width: 100%;
+  }
+
+  .login-container .separator::after {
+    display: none;
+  }
+
+  .login-logo img {
+    max-width: 230px !important;
+  }
+
+  .login-form .login-button,
+  .login-form .cancel-button {
+    width: 100%; /* botones más amigables en móvil */
+  }
+
+  .container {
+    background-size: cover; /* en móviles */
+    background-position: top center; /* enfoca otra parte si lo necesitas */
+  }
+
+  .login-form-content {
+    padding-left: 2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .login-inner {
+    gap: 4rem; /* separa más logo y formulario */
+  }
+
+  .login-logo img {
+    width: 420px !important; /* que no quede tan pequeño */
+  }
+}

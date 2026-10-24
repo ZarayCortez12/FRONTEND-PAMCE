@@ -1,0 +1,355 @@
+.ver-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 10px;
+}
+
+.ver-button {
+  background-color: #2196f3;
+}
+
+.editar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #18c221;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 10px;
+}
+
+.editar-button {
+  background-color: #18c221;
+}
+
+.borrar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #e20000;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 10px;
+}
+
+.borrar-button {
+  background-color: #e20000;
+}
+
+.color-icon {
+  color: #001529;
+}
+
+.cancel-confirm {
+  color: #000000 !important;
+  transition: 0.1s !important;
+  text-decoration: none !important;
+}
+
+.cancel-confirm:hover {
+  color: #e02029 !important;
+  transition: 0.1s !important;
+  text-decoration: underline !important;
+}
+
+/* .square-button svg {
+  color: black; 
+  font-size: 20px; 
+} */
+
+.ver-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #2196f3; /* Efecto de enfoque */
+}
+
+/* -------------------------- */
+
+.boton-bonitoFormularios {
+  margin-top: 20px;
+  /* margin-right: 20px; */
+  margin-left: 1px;
+  background-color: #060f17;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+
+.boton-bonitoFormularios:focus {
+  outline: none;
+}
+
+.boton-bonitoFormularios:active {
+  transform: translateY(1px);
+}
+
+/* ---------------------------------------------------- */
+
+.boton-bonito {
+  margin-top: 30px;
+  background-color: #001529 !important;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+.boton-bonito:focus {
+  outline: none;
+}
+
+.boton-bonito.disabled {
+  background-color: #d9d9d9; /* Color de fondo cuando está deshabilitado */
+  color: #bfbfbf; /* Color del texto cuando está deshabilitado */
+}
+
+.boton-bonito2 {
+  margin-top: -3px;
+  background-color: #001529 !important;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+.boton-bonito2:focus {
+  outline: none;
+}
+
+.boton-bonito2.disabled {
+  background-color: #d9d9d9; /* Color de fondo cuando está deshabilitado */
+  color: #bfbfbf; /* Color del texto cuando está deshabilitado */
+}
+
+.boton-bonito2 i {
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+/* .boton-bonito:active {
+    transform: translateY(1px); 
+  } */
+.boton-bonitoPDF i {
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+.boton-bonito i {
+  margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
+.boton-bonitoVentas {
+  margin-top: 80px;
+  background-color: #001529;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+
+.boton-bonitoVentas:hover {
+  background-color: #0651a7;
+}
+
+.boton-bonitoVentas:focus {
+  outline: none;
+}
+
+.boton-bonitoVentas:active {
+  transform: translateY(1px);
+}
+
+.boton-bonitoPDF {
+  margin-top: 80px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: #ff2116;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+
+.boton-bonitoPDF:focus {
+  outline: none;
+}
+
+.boton-bonitoPDF:active {
+  transform: translateY(1px);
+}
+
+.boton-bonitoExcel {
+  background-color: rgba(20, 131, 72, 255);
+  margin-top: -15px;
+  margin-bottom: 15px;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+
+.boton-bonitoExcel:focus {
+  outline: none;
+}
+
+.boton-bonitoExcel:active {
+  transform: translateY(1px);
+}
+
+.boton-bonitoVolver {
+  margin-top: 80px;
+  background-color: #001529;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 21, 41, 0.3);
+}
+
+.boton-bonitoVolver:focus {
+  outline: none;
+}
+
+.boton-bonitoVolver:active {
+  transform: translateY(1px);
+}
+
+.tamanio {
+  margin-top: -70px;
+}
+
+.square-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin-left: 10px;
+}
+
+.square-button:hover {
+  background-color: #bb2d3b;
+}
+
+.square-button svg {
+  color: black;
+  font-size: 20px;
+}
+
+.square-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.5); /* Efecto de enfoque */
+}
+
+.boton-agregar-sede {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-agregar-sede:hover {
+  background-color: #daa520; /* tono más claro del dorado */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buscar-sede {
+  transition: all 0.3s ease;
+}
+
+.buscar-sede:focus {
+  box-shadow: 0 0 10px rgba(17, 90, 198, 0.6);
+  transform: scale(1.03);
+  border-color: #115ac6;
+  outline: none;
+}
+
+.buscar-area {
+  transition: all 0.3s ease;
+}
+
+.buscar-area:focus {
+  box-shadow: 0 0 10px rgba(17, 90, 198, 0.6);
+  transform: scale(1.03);
+  border-color: #115ac6;
+  outline: none;
+}
+
+.card-container:hover .card-buttons {
+  display: block !important;
+}
+
+.ver-informacion-entidad:hover {
+  background-color: #115ac6 !important;
+  color: white !important;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-actions input,
+  .header-actions button {
+    width: 100% !important;
+  }
+}

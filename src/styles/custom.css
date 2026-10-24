@@ -1,0 +1,146 @@
+.ant-menu-submenu-popup .ant-menu-item,
+.ant-menu-submenu-popup .ant-menu-submenu-title {
+  background-color: #ffff !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover,
+.ant-menu-submenu-popup .ant-menu-submenu-title:hover {
+  color: #e10318 !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #ffff !important;
+  color: #e10318 !important;
+}
+
+.ant-menu-item-selected,
+.ant-menu-item-selected .ant-menu-title-content,
+.ant-menu-item-selected .ant-menu-item-icon {
+  color: #e10318 !important;
+}
+
+.ant-menu-item-selected:hover {
+  color: #e10318 !important;
+  background-color: #fff !important;
+}
+
+.ant-menu-submenu-arrow {
+  color: #000 !important;
+}
+
+.custom-danger-button {
+  background-color: #e02029 !important;
+  color: white !important;
+  margin-left: 20px;
+}
+
+.custom-danger-button:hover {
+  background-color: #df3e3e !important;
+  border-color: #df3e3e;
+}
+
+.custom-view-button {
+  background-color: #efab0b !important;
+  color: white !important;
+  margin-left: 20px;
+}
+
+.custom-view-button:hover {
+  background-color: #efab0b !important;
+  border-color: #efab0b;
+}
+
+.custom-success-button {
+  background-color: #00c219 !important;
+  color: white !important;
+  margin-left: 20px;
+}
+
+.custom-success-button:hover {
+  background-color: #00c219 !important;
+  border-color: #00c219;
+}
+
+.agregar-edicion:hover {
+  background-color: #e10318 !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+}
+
+.custom-select .ant-select-selector {
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.custom-select.ant-select-focused .ant-select-selector {
+  border-color: #e10318 !important;
+  box-shadow: 0 0 0 2px rgba(225, 3, 24, 0.2) !important;
+}
+
+.custom-select:hover .ant-select-selector {
+  border-color: #e10318 !important;
+}
+
+.limpiar-filtros:hover {
+  background: #115ac6 !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-dropdown-menu-item {
+  line-height: normal !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  height: auto !important;
+}
+
+.ant-dropdown-menu {
+  padding: 4px !important;
+}
+
+.ant-dropdown-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Forzar fondo gris en Select de Ant Design */
+.custom-ant-select .ant-select-selector {
+  background-color: #e5e7eb !important;
+  border-radius: 0.375rem !important; /* rounded-md */
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Color placeholder */
+.custom-ant-select .ant-select-selection-placeholder {
+  color: #6b7280 !important; /* text-gray-500 */
+  font-family: Inter, sans-serif;
+}
+
+.custom-tabs .ant-tabs-tab {
+  transition: all 0.3s !important;
+  padding: 15px 5px !important;
+}
+
+.custom-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #e10318 !important; /* Rojo de tu logo */
+  font-weight: 800 !important;
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  background: #e10318 !important;
+  height: 3px !important;
+  border-radius: 3px 3px 0 0;
+}
+
+.custom-tabs .ant-tabs-tab:hover {
+  color: #e10318 !important;
+}
+
+.fecha-nacimiento-datepicker input {
+  font-size: 13px !important;
+}
+
+.formulario-registro .ant-form-item-explain-error {
+  font-size: 12px !important;
+  font-family: "Inter", sans-serif;
+  line-height: 1.4;
+}
