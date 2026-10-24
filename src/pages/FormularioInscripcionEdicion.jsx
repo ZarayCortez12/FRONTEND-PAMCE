@@ -331,40 +331,6 @@ function FormularioInscripcionEdicion({ modo = "invitacion" }) {
     return Promise.resolve();
   };
 
-  const guardarInformacionJurado = (values) => {
-    setLoading(true);
-    const payload = {
-      ...values,
-      fecha_nacimiento: values.fecha_nacimiento
-        ? values.fecha_nacimiento.format("YYYY-MM-DD")
-        : null,
-    };
-
-    dispatch(editarInformacionJurado(payload))
-      .unwrap()
-      .then((res) => {
-        toast.success(res.message, {
-          position: "top-right",
-          autoClose: 3000,
-          pauseOnHover: true,
-          draggable: true,
-        });
-      })
-      .catch((err) => {
-        toast.error(err.message, {
-          position: "top-right",
-          autoClose: 3000,
-          pauseOnHover: true,
-          draggable: true,
-        });
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 800);
-      });
-  };
-
   const onSeleccionarCategoria = (id_edicion_categoria) => {
     const limpiarCampos = {};
 
@@ -646,57 +612,32 @@ function FormularioInscripcionEdicion({ modo = "invitacion" }) {
         }
       });
 
-      const data = {};
-
-      for (const [key, value] of formData.entries()) {
-        const parsedValue =
-          value instanceof File
-            ? {
-                name: value.name,
-                type: value.type,
-                size: value.size,
-              }
-            : value;
-
-        if (data[key]) {
-          if (!Array.isArray(data[key])) {
-            data[key] = [data[key]];
-          }
-          data[key].push(parsedValue);
-        } else {
-          data[key] = parsedValue;
-        }
-      }
-
-      dispatch(
+      // Se espera la respuesta para que el botón siga deshabilitado
+      // (antes se podía enviar la postulación varias veces)
+      const respuesta = await dispatch(
         registrarParticipacionPublico({
           formData,
           ...(esPublica ? {} : { token }),
         }),
-      )
-        .unwrap()
-        .then((res) => {
-          toast.success(res.message, {
-            position: "top-right",
-            autoClose: 1500,
-          });
+      ).unwrap();
 
-          setTimeout(() => {
-            navigate("/postulacion/confirmacion", {
-              replace: true,
-              state: {
-                nombreEdicion: edicion.nombre_edicion,
-              },
-            });
-          }, 2100);
-        })
-        .catch((err) => {
-          toast.error(err.message);
+      toast.success(respuesta.message, {
+        position: "top-right",
+        autoClose: 1500,
+      });
+
+      setTimeout(() => {
+        navigate("/postulacion/confirmacion", {
+          replace: true,
+          state: {
+            nombreEdicion: edicion.nombre_edicion,
+          },
         });
+      }, 2100);
     } catch (error) {
-      console.log(error);
       toast.error(error?.message || "Error al enviar la postulación");
-    } finally {
+      // Solo se reactiva el botón si hubo error; si se envió, sigue
+      // deshabilitado hasta la redirección
       setLoading(false);
     }
   };
@@ -734,7 +675,11 @@ function FormularioInscripcionEdicion({ modo = "invitacion" }) {
             { title: "Requisitos Categoría" },
           ]}
         />
-        <Form form={form} layout="vertical">
+        <Form
+          form={form}
+          layout="vertical"
+          requiredMark={pasoActual === 0 ? false : undefined}
+        >
           {pasoActual === 0 && (
             <>
               <div
@@ -745,12 +690,7 @@ function FormularioInscripcionEdicion({ modo = "invitacion" }) {
                   overflowY: "auto",
                 }}
               >
-                <Form
-                  layout="vertical"
-                  form={form}
-                  onFinish={(values) => guardarInformacionJurado(values)}
-                  requiredMark={false}
-                >
+                <div>
                   <Row gutter={[28, 16]}>
                     <Col xs={24} sm={24} md={12} lg={8}>
                       <Form.Item
@@ -1132,7 +1072,7 @@ function FormularioInscripcionEdicion({ modo = "invitacion" }) {
                       </Form.Item>
                     </Col>
                   </Row>
-                </Form>
+                </div>
               </div>
             </>
           )}
