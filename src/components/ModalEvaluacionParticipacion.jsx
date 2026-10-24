@@ -194,6 +194,12 @@ function InformacionEvaluacion({
 
   useEffect(() => {
     if (!id_edicion_categoria || !id_participacion_jurado) return;
+
+    // Al abrir el modal para otro jurado se limpian las notas del anterior
+    setNotas({});
+    setObservaciones({});
+    let cancelado = false;
+
     dispatch(
       listarRubricasPorCategoriaEdicion({
         id_edicion_categoria,
@@ -202,6 +208,7 @@ function InformacionEvaluacion({
     dispatch(obtenerEvaluacion(id_participacion_jurado))
       .unwrap()
       .then((res) => {
+        if (cancelado) return;
         res.evaluaciones.forEach((e) =>
           setNotas((prev) => ({
             ...prev,
@@ -217,8 +224,11 @@ function InformacionEvaluacion({
       })
       .catch((err) => {
         console.log("Error al obtener la evaluacion", err);
-      })
-      .catch((err) => console.log("Error al obtener la participacion", err));
+      });
+
+    return () => {
+      cancelado = true;
+    };
   }, [id_edicion_categoria, id_participacion_jurado, dispatch]);
 
   const calcularNotaCriterio = (nota, pesoRubrica, pesoCriterio) => {

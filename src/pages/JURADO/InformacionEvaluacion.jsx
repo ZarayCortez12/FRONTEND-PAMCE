@@ -156,8 +156,10 @@ const RenderEvaluacionModerna = ({
                         onChange={(val) => {
                           setNotas((prev) => ({
                             ...prev,
+                            // Un campo vacío queda sin nota (no como 0), para
+                            // que la validación exija calificarlo
                             [rc.edicionCategoriaRubricaCriterio[0].id_ecr]:
-                              val || 0,
+                              val ?? null,
                           }));
                         }}
                       />
@@ -282,10 +284,20 @@ function InformacionEvaluacion() {
 
     setEditando(false);
     setIsEvaluado(false);
+    // Se limpian las notas de la participación anterior antes de cargar
+    // las de esta; si no, quedaban mezcladas y se podían enviar
+    setNotas({});
+    setObservaciones({});
+    setObservacionGeneral("");
+
+    // Si el jurado cambia de participación antes de que lleguen las
+    // respuestas, las de la participación anterior se ignoran
+    let cancelado = false;
 
     dispatch(obtenerParticipacionAEvaluar(id_participacion))
       .unwrap()
       .then((res) => {
+        if (cancelado) return;
         toast.success(res.message, {
           toastId: "postulacion-success",
           position: "top-right",
@@ -321,6 +333,7 @@ function InformacionEvaluacion() {
         )
           .unwrap()
           .then((res) => {
+            if (cancelado) return;
             res.evaluaciones.forEach((e) =>
               setNotas((prev) => ({
                 ...prev,
@@ -346,7 +359,11 @@ function InformacionEvaluacion() {
           });
       })
       .catch((err) => console.log("Error al obtener la participacion", err));
-  }, [edicion?.id_edicion, dispatch]);
+
+    return () => {
+      cancelado = true;
+    };
+  }, [edicion?.id_edicion, id_participacion, usuario?.id_usuario, dispatch]);
 
   const abrirVistaPrevia = async (record) => {
     if (!record?.respuesta || record.respuesta === "No respondió") {
