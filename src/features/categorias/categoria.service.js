@@ -1,5 +1,4 @@
 import axios from "axios";
-import { config } from "../../utils/axiosconfig";
 import { base_url } from "../../utils/baseUrl";
 
 const listarCategoriasPorEdicion = async (id_edicion, params) => {

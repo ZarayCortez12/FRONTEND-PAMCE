@@ -9,7 +9,6 @@ import { MdAssessment } from "react-icons/md";
 import dayjs from "dayjs";
 import { Trophy, ClipboardList } from "lucide-react";
 import imagen_no_data from "../../images/imagen_no_data.jpg";
-import RubricaCategoriaEdicion from "../../components/RubricaCategoriaEdicion";
 import { useNavigate } from "react-router-dom";
 import RubricasCategoriaEdicion from "@/components/CategoriasEdicionInfo/RubricasCategoriaEdicion";
 import RequisitosCategoriaEdicion from "@/components/CategoriasEdicionInfo/RequisitosCategoriaEdicion";

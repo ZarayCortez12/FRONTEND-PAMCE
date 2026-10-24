@@ -8,7 +8,6 @@ import ValidarCodigo from "./pages/validar_codigo.jsx";
 import NuevaClave from "./pages/nueva_clave.jsx";
 import CrearContraseñaUsuario from "./pages/CrearContraseñaUsuario.jsx";
 import RegistroPage from "./pages/RegistroModal.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
 import MainLayout from "./components/MainLayout.jsx";
 import FormularioInscripcionEdicion from "./pages/FormularioInscripcionEdicion.jsx";
 import ConfirmacionPostulacion from "./pages/ConfirmacionPostulacion.jsx";
@@ -68,7 +67,6 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path="/" element={<HomePage />} />
@@ -267,7 +265,6 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </AuthProvider>
     </BrowserRouter>
   );
 }

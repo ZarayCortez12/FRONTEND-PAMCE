@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import AutenticacionService from "./autenticacion.service";
 import EdicionService from "./ediciones/edicion.service";
-import { getUserFromToken } from "../utils/auth";
 
 export const iniciarSesionUsuario = createAsyncThunk(
   "autenticacion/iniciarSesionUsuario",
