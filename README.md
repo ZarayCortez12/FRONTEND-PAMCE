@@ -2,7 +2,7 @@
 
 Interfaz web del sistema **PAMCE** (Premio Anual al Mérito Científico y Empresarial), proyecto de grado del Programa de Ingeniería de Sistemas de la Universidad Francisco de Paula Santander.
 
-Necesita el [backend de PAMCE](https://github.com/ZarayCortez12/BACKEND-PAMCE-PODMAN) en ejecución.
+Necesita el [backend de PAMCE](https://github.com/ZarayCortez12/BACKEND-PAMCE) en ejecución.
 
 ## Tecnologías
 
