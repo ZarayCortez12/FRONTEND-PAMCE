@@ -1,8 +1,8 @@
-# PAMCE · Frontend
+﻿# PAMCE · Frontend
 
 Interfaz web del sistema **PAMCE** (Premio Anual al Mérito Científico y Empresarial), proyecto de grado del Programa de Ingeniería de Sistemas de la Universidad Francisco de Paula Santander.
 
-Necesita el [backend de PAMCE](https://github.com/ZarayCortez12/BACKEND-PAMCE) en ejecución.
+Necesita el [backend de PAMCE](https://github.com/ZarayCortez12/BACKEND-PAMCE-PODMAN) en ejecución.
 
 ## Tecnologías
 
@@ -51,16 +51,35 @@ Necesita el [backend de PAMCE](https://github.com/ZarayCortez12/BACKEND-PAMCE) e
 | `/jurado/...` | Evaluaciones asignadas |
 | `/participante/...` | Participaciones, requisitos, resultados y certificado |
 
-## Docker
+## Podman
 
-La URL del backend queda incluida en el build:
+El despliegue usa [Podman](https://podman.io/) (funciona sin root). La imagen se define en `Containerfile`. La URL del backend queda incluida en el build, así que si cambia hay que reconstruir la imagen.
 
 ```bash
-docker build --build-arg VITE_API_URL=https://api.ejemplo.com -t pamce-frontend .
-docker run -p 80:80 pamce-frontend
+cp .env.example .env     # y ajusta VITE_API_URL
+podman compose up -d --build
 ```
 
-`nginx.conf` sirve la aplicación y redirige todas las rutas a `index.html`.
+La aplicación queda en `http://localhost:8080`. Sin compose:
+
+```bash
+podman build --build-arg VITE_API_URL=https://api.ejemplo.com -t pamce-frontend -f Containerfile .
+podman run -d --name pamce-frontend -p 8080:8080 localhost/pamce-frontend
+```
+
+`nginx.conf` sirve la aplicación en el puerto 8080 (un usuario normal no puede abrir el 80) y redirige todas las rutas a `index.html`. Para publicarla en el 80/443 de la universidad, usa el proxy inverso del servidor hacia el 8080.
+
+### Arranque automático en el servidor (systemd)
+
+`deploy/pamce-frontend.container` es una unidad Quadlet. Con la imagen ya construida:
+
+```bash
+mkdir -p ~/.config/containers/systemd
+cp deploy/pamce-frontend.container ~/.config/containers/systemd/
+systemctl --user daemon-reload
+systemctl --user start pamce-frontend
+loginctl enable-linger $USER    # sigue corriendo al cerrar la sesión
+```
 
 ## Estructura
 

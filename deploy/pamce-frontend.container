@@ -1,0 +1,17 @@
+# Quadlet: arranca el frontend con systemd, sin root.
+# Copiar a ~/.config/containers/systemd/ y ver el README (sección Podman).
+[Unit]
+Description=Frontend de PAMCE
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=localhost/pamce-frontend:latest
+ContainerName=pamce-frontend
+PublishPort=8080:8080
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

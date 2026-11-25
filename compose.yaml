@@ -1,0 +1,14 @@
+# Se ejecuta con: podman compose up -d --build   (o podman-compose up -d --build)
+# VITE_API_URL se lee de .env y queda incluida en el build; si cambia, hay que
+# volver a construir la imagen.
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Containerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:4000}
+    image: localhost/pamce-frontend:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
